@@ -157,7 +157,7 @@ Initially, The I/O only happened through a physically connected system console. 
         <h1 id="what-is-redirection-in-os">What is redirection in OS?<a href="#what-is-redirection-in-os" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
 <p>Have you heard about <strong>redirection in OS</strong>? If not then this article is for you. In this article, we will learn about redirection in OS.</p>
 <h2 id="introduce-standard-input-output-and-error">Introduce Standard Input, Output, and Error<a href="#introduce-standard-input-output-and-error" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<!-- raw HTML omitted -->
+<p><img src="https://github.com/tmdgusya/Study-Java-File-Stream/assets/57784077/1653ab4c-a32b-4844-b130-11af3ca3a8fd" alt=""></p>
 <p><a href="https://en.wikipedia.org/wiki/Redirection_(computing)">The photo is from here</a></p>
 <p>Initially, The I/O only happened through <strong>a physically connected system console</strong>. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system. So, the <strong>standard input, output, and error</strong> were introduced.</p>
 <p>Standard Stream abstracts this aspect to satisfy the program&rsquo;s needs to customize the input and output. The standard stream is a <strong>pre-connected input and output communication channel</strong> between a computer program and its environment when it begins execution. The three input/output (I/O) connections are called <strong>standard input (stdin), standard output (stdout), and standard error (stderr)</strong>.</p>
@@ -165,10 +165,10 @@ Initially, The I/O only happened through a physically connected system console. 
 <h2 id="what-is-redirection">What is redirection?<a href="#what-is-redirection" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p><strong>Redirection</strong> is a feature in Linux such that when executing a command, you can change the standard input/output devices. If you do not understand what it is, then don&rsquo;t worry. I&rsquo;ll show you some examples.</p>
 <p>What is my console&rsquo;s standard output of the <code>ls -a</code> command? That might be a console.</p>
-<!-- raw HTML omitted -->
+<p><img src="https://github.com/tmdgusya/zoomkoding-gatsby-blog/assets/57784077/6f74830f-aa96-4838-a0aa-60840af372f3" alt=""></p>
 <p>As you can see, the standard output of <code>ls -a</code> command is a console. But, what if I want to save the standard output of <code>ls -a</code> command to a file? Then, I can use <strong>redirection</strong>.</p>
 <pre tabindex="0"><code>ls -a &gt; output.txt
-</code></pre><!-- raw HTML omitted -->
+</code></pre><p><img src="https://github.com/tmdgusya/zoomkoding-gatsby-blog/assets/57784077/eb270d52-b20c-49a2-a3e1-ebbcfc6e1a82" alt=""></p>
 <p>As you can see, the standard output of <code>ls -a</code> command is saved to <code>output.txt</code> file. This is what <strong>redirection</strong> is.</p>
 <h3 id="redirect-standard-input">Redirect Standard Input<a href="#redirect-standard-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>The standard input is the default source of data for a program or process. The standard input is usually the keyboard, but it depends on the system. The standard input is usually represented in a program by the file handle <code>stdin</code>.</p>
@@ -176,7 +176,7 @@ Initially, The I/O only happened through a physically connected system console. 
 <pre tabindex="0"><code>Hello, World!
 </code></pre><p>And I want to print the text in the <code>input.txt</code> file to the console. Then, I can use <strong>redirection</strong>.</p>
 <pre tabindex="0"><code>cat &lt; input.txt
-</code></pre><!-- raw HTML omitted -->
+</code></pre><p><img src="https://github.com/tmdgusya/Study-Java-File-Stream/assets/57784077/a7846e72-9ad7-4456-a6b1-d9b0acbdc219" alt=""></p>
 <p>I think you already understand what <strong>redirection</strong> is. Let&rsquo;s move on to the next section. I guess you may want to learn about how it works under the hood. So, In the next post, I&rsquo;m gonna show you about <strong>file descriptor</strong>.</p>
 
       </div></div>
