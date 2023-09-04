@@ -365,5 +365,41 @@ Install Hugo on your local Before we jump right into the installation, I only wr
 </content>
     </item>
     
+    <item>
+      <title>What is redirection in OS</title>
+      <link>https://tmdgusya.github.io/posts/unix/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tmdgusya.github.io/posts/unix/</guid>
+      <description>What is redirection in OS? Have you heard about redirection in OS? If not then this article is for you. In this article, we will learn about redirection in OS.
+Introduce Standard Input, Output, and Error The photo is from here
+Initially, The I/O only happened through a physically connected system console. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system.</description>
+      <content>&lt;h1 id=&#34;what-is-redirection-in-os&#34;&gt;What is redirection in OS?&lt;/h1&gt;
+&lt;p&gt;Have you heard about &lt;strong&gt;redirection in OS&lt;/strong&gt;? If not then this article is for you. In this article, we will learn about redirection in OS.&lt;/p&gt;
+&lt;h2 id=&#34;introduce-standard-input-output-and-error&#34;&gt;Introduce Standard Input, Output, and Error&lt;/h2&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Redirection_(computing)&#34;&gt;The photo is from here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Initially, The I/O only happened through &lt;strong&gt;a physically connected system console&lt;/strong&gt;. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system. So, the &lt;strong&gt;standard input, output, and error&lt;/strong&gt; were introduced.&lt;/p&gt;
+&lt;p&gt;Standard Stream abstracts this aspect to satisfy the program&amp;rsquo;s needs to customize the input and output. The standard stream is a &lt;strong&gt;pre-connected input and output communication channel&lt;/strong&gt; between a computer program and its environment when it begins execution. The three input/output (I/O) connections are called &lt;strong&gt;standard input (stdin), standard output (stdout), and standard error (stderr)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;So, Today, we are going to learn about &lt;strong&gt;redirection in OS&lt;/strong&gt;.  Let&amp;rsquo;s get started.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-redirection&#34;&gt;What is redirection?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Redirection&lt;/strong&gt; is a feature in Linux such that when executing a command, you can change the standard input/output devices. If you do not understand what it is, then don&amp;rsquo;t worry. I&amp;rsquo;ll show you some examples.&lt;/p&gt;
+&lt;p&gt;What is my console&amp;rsquo;s standard output of the &lt;code&gt;ls -a&lt;/code&gt; command? That might be a console.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;As you can see, the standard output of &lt;code&gt;ls -a&lt;/code&gt; command is a console. But, what if I want to save the standard output of &lt;code&gt;ls -a&lt;/code&gt; command to a file? Then, I can use &lt;strong&gt;redirection&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ls -a &amp;gt; output.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;As you can see, the standard output of &lt;code&gt;ls -a&lt;/code&gt; command is saved to &lt;code&gt;output.txt&lt;/code&gt; file. This is what &lt;strong&gt;redirection&lt;/strong&gt; is.&lt;/p&gt;
+&lt;h3 id=&#34;redirect-standard-input&#34;&gt;Redirect Standard Input&lt;/h3&gt;
+&lt;p&gt;The standard input is the default source of data for a program or process. The standard input is usually the keyboard, but it depends on the system. The standard input is usually represented in a program by the file handle &lt;code&gt;stdin&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll show you how to redirect standard input. Let&amp;rsquo;s say I have an &lt;code&gt;input.txt&lt;/code&gt; file that contains the following text.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Hello, World!
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;And I want to print the text in the &lt;code&gt;input.txt&lt;/code&gt; file to the console. Then, I can use &lt;strong&gt;redirection&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;cat &amp;lt; input.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;I think you already understand what &lt;strong&gt;redirection&lt;/strong&gt; is. Let&amp;rsquo;s move on to the next section. I guess you may want to learn about how it works under the hood. So, In the next post, I&amp;rsquo;m gonna show you about &lt;strong&gt;file descriptor&lt;/strong&gt;.&lt;/p&gt;
+</content>
+    </item>
+    
   </channel>
 </rss>

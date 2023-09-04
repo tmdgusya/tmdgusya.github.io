@@ -34,5 +34,9 @@
     <loc>https://tmdgusya.github.io/tags/</loc>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://tmdgusya.github.io/posts/unix/</loc>
+    <changefreq>always</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

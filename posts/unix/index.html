@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>What is redirection in OS :: Terminal</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="What is redirection in OS? Have you heard about redirection in OS? If not then this article is for you. In this article, we will learn about redirection in OS.
+Introduce Standard Input, Output, and Error The photo is from here
+Initially, The I/O only happened through a physically connected system console. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system." />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://tmdgusya.github.io/posts/unix/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://tmdgusya.github.io/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="https://tmdgusya.github.io/img/theme-colors/orange.png">
+  <link rel="apple-touch-icon" href="https://tmdgusya.github.io/img/theme-colors/orange.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="tmdgusya" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="What is redirection in OS">
+<meta property="og:description" content="What is redirection in OS? Have you heard about redirection in OS? If not then this article is for you. In this article, we will learn about redirection in OS.
+Introduce Standard Input, Output, and Error The photo is from here
+Initially, The I/O only happened through a physically connected system console. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system." />
+<meta property="og:url" content="https://tmdgusya.github.io/posts/unix/" />
+<meta property="og:site_name" content="Terminal" />
+
+  
+  
+  <meta property="og:image" content="https://tmdgusya.github.io/posts/unix/logo.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="orange">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/showcase">Showcase</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/showcase" >Showcase</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="https://tmdgusya.github.io/posts/unix/">What is redirection in OS</a>
+  </h1>
+  <div class="post-meta"><span class="post-author">tmdgusya</span></div>
+
+  
+  
+  <img src="https://tmdgusya.github.io/posts/unix/logo.png"
+    class="post-cover"
+    alt="What is redirection in OS"
+    title="Cover Image" />
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="what-is-redirection-in-os">What is redirection in OS?<a href="#what-is-redirection-in-os" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Have you heard about <strong>redirection in OS</strong>? If not then this article is for you. In this article, we will learn about redirection in OS.</p>
+<h2 id="introduce-standard-input-output-and-error">Introduce Standard Input, Output, and Error<a href="#introduce-standard-input-output-and-error" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<!-- raw HTML omitted -->
+<p><a href="https://en.wikipedia.org/wiki/Redirection_(computing)">The photo is from here</a></p>
+<p>Initially, The I/O only happened through <strong>a physically connected system console</strong>. (input via keyboard, output via monitor), As time passed, the I/O devices(input via mouse, or touch-pad, etc) were added to the system. So, the <strong>standard input, output, and error</strong> were introduced.</p>
+<p>Standard Stream abstracts this aspect to satisfy the program&rsquo;s needs to customize the input and output. The standard stream is a <strong>pre-connected input and output communication channel</strong> between a computer program and its environment when it begins execution. The three input/output (I/O) connections are called <strong>standard input (stdin), standard output (stdout), and standard error (stderr)</strong>.</p>
+<p>So, Today, we are going to learn about <strong>redirection in OS</strong>.  Let&rsquo;s get started.</p>
+<h2 id="what-is-redirection">What is redirection?<a href="#what-is-redirection" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p><strong>Redirection</strong> is a feature in Linux such that when executing a command, you can change the standard input/output devices. If you do not understand what it is, then don&rsquo;t worry. I&rsquo;ll show you some examples.</p>
+<p>What is my console&rsquo;s standard output of the <code>ls -a</code> command? That might be a console.</p>
+<!-- raw HTML omitted -->
+<p>As you can see, the standard output of <code>ls -a</code> command is a console. But, what if I want to save the standard output of <code>ls -a</code> command to a file? Then, I can use <strong>redirection</strong>.</p>
+<pre tabindex="0"><code>ls -a &gt; output.txt
+</code></pre><!-- raw HTML omitted -->
+<p>As you can see, the standard output of <code>ls -a</code> command is saved to <code>output.txt</code> file. This is what <strong>redirection</strong> is.</p>
+<h3 id="redirect-standard-input">Redirect Standard Input<a href="#redirect-standard-input" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The standard input is the default source of data for a program or process. The standard input is usually the keyboard, but it depends on the system. The standard input is usually represented in a program by the file handle <code>stdin</code>.</p>
+<p>I&rsquo;ll show you how to redirect standard input. Let&rsquo;s say I have an <code>input.txt</code> file that contains the following text.</p>
+<pre tabindex="0"><code>Hello, World!
+</code></pre><p>And I want to print the text in the <code>input.txt</code> file to the console. Then, I can use <strong>redirection</strong>.</p>
+<pre tabindex="0"><code>cat &lt; input.txt
+</code></pre><!-- raw HTML omitted -->
+<p>I think you already understand what <strong>redirection</strong> is. Let&rsquo;s move on to the next section. I guess you may want to learn about how it works under the hood. So, In the next post, I&rsquo;m gonna show you about <strong>file descriptor</strong>.</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://tmdgusya.github.io/posts/hugo/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Make Personal Blog with Hugo and Github pages</span>
+            </a>
+        </span>
+        
+        
+    </div>
+</div>
+
+  
+
+  
+    <script src="https://utteranc.es/client.js"
+        repo="tmdgusya/tmdgusya.github.io"
+        issue-term="pathname"
+        theme="github-dark-orange"
+        crossorigin="anonymous"
+        async>
+</script>
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2023 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
