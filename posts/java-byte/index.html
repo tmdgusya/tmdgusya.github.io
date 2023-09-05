@@ -161,7 +161,7 @@ How Java&amp;rsquo;s numeric types work? First of all, We have to know about wha
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span> b1 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">byte</span><span style="color:#f92672">)</span> 24<span style="color:#f92672">;</span>
 </span></span><span style="display:flex;"><span>    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span>b1<span style="color:#f92672">);</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span></code></pre></div><p>The reason is the assignment conversion is performed by compiler behind the scene. Effectively <strong>casting the int literals to the narrower types</strong>.</p>
+</span></span></code></pre></div><p>The reason is the assignment conversion is performed by compiler behind the scenes. Effectively <strong>casting the int literals to the narrower types</strong>.</p>
 <p>If we fit the number that exceeds the range of byte into a variable of byte type, then we have to <strong>risk data loss</strong> and write <strong>explicitly casting</strong> in the code.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ByteTest</span> <span style="color:#f92672">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
@@ -187,11 +187,11 @@ How Java&amp;rsquo;s numeric types work? First of all, We have to know about wha
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     *             output stream has been closed.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">     */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">write</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> b<span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> IOException<span style="color:#f92672">;</span>
-</span></span></code></pre></div><p>This method is one of the interface of OutputStream in Java. There&rsquo;s an important clarification. That is a &ldquo;The byte to be written is the eight low-order bits of the argument given number. The 24 high-order bits of <strong>given number are ignored</strong>.&rdquo;</p>
+</span></span></code></pre></div><p>This method is one of the interfaces of OutputStream in Java. There&rsquo;s an important clarification. That is a &ldquo;The byte to be written is the eight low-order bits of the argument given number. The 24 high-order bits of <strong>given number are ignored</strong>.&rdquo;</p>
 <p>That means we might going to write the unexpected number to the OutputStream. Why does the write method of OutputStream have an argument as <strong>int type, not a byte type</strong> even though they have recognized this problem?</p>
 <p>You should look at the code below to understand why the system was designed like that.</p>
 <p><img src="https://github.com/tmdgusya/kotlin-leetcode/assets/57784077/e3567f83-7580-470e-b72d-2712990b778e" alt=""></p>
-<p>I guess you might not know this. Also, their is <strong>the another problem</strong>.</p>
+<p>I guess you might not know this. Also, there is <strong>the another problem</strong>.</p>
 <p><img src="https://github.com/tmdgusya/kotlin-leetcode/assets/57784077/ff2afb72-d4f3-4b76-966a-b971439674a9" alt=""></p>
 <p>To solve this problem, you have to write explicitly casting in the code.</p>
 <p><img src="https://github.com/tmdgusya/kotlin-leetcode/assets/57784077/29176152-882a-483b-b7c8-320e061e7683" alt=""></p>
