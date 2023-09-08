@@ -403,6 +403,75 @@ Initially, The I/O only happened through a physically connected system console. 
     </item>
     
     <item>
+      <title>What is user mode and kernel mode?</title>
+      <link>https://tmdgusya.github.io/posts/linux_kernel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tmdgusya.github.io/posts/linux_kernel/</guid>
+      <description>What is Kernel in Linux? What is the Linux kernel? It might be challenging to answer if you haven&amp;rsquo;t delved into this concept. When we decide to study the kernel, sometimes we find it exhausting due to the amount of information we need to grasp about the operating system.
+So, I&amp;rsquo;m going to provide a brief introduction to the kernel and show you an example written in Go.
+How does process access to file?</description>
+      <content>&lt;h1 id=&#34;what-is-kernel-in-linux&#34;&gt;What is Kernel in Linux?&lt;/h1&gt;
+&lt;p&gt;What is the &lt;strong&gt;Linux kernel&lt;/strong&gt;? It might be challenging to answer if you haven&amp;rsquo;t delved into this concept. When we decide to study the kernel, sometimes we find it exhausting due to the amount of information we need to grasp about the operating system.&lt;/p&gt;
+&lt;p&gt;So, I&amp;rsquo;m going to provide a brief introduction to the kernel and show you an example written in Go.&lt;/p&gt;
+&lt;h2 id=&#34;how-does-process-access-to-file&#34;&gt;How does process access to file?&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/SJP1kUDA3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Have you ever wondered &lt;strong&gt;how you would access a file in our directory&lt;/strong&gt;? And if multiple processes &lt;strong&gt;need to access the same file simultaneously&lt;/strong&gt;, how would you control that?&lt;/p&gt;
+&lt;h2 id=&#34;user-mode--kernel-mode&#34;&gt;User mode / Kernel mode&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;The operating system (OS)&lt;/strong&gt; utilizes the &lt;strong&gt;kernel&lt;/strong&gt; to manage processes. &lt;strong&gt;Typically, CPUs have two modes&lt;/strong&gt;. &lt;strong&gt;User mode and Kernel mode.&lt;/strong&gt; (sometimes, there may be three modes). If our command is &lt;strong&gt;executed in user mode&lt;/strong&gt;, we may &lt;strong&gt;face restrictions&lt;/strong&gt; when it comes to tasks like accessing files or obtaining information from the OS. On the other hand, when our program &lt;strong&gt;operates in kernel mode&lt;/strong&gt;, we have the freedom to execute most commands &lt;strong&gt;without constraints&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/rklbr1IvCh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;So, the OS solved the problem by changing the process&amp;rsquo;s mode to &lt;strong&gt;either kernel mode or user mode&lt;/strong&gt;, allowing or restricting access as needed.&lt;/p&gt;
+&lt;h2 id=&#34;system-call&#34;&gt;System call&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/SJChWIP0n.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Before we dive into the example, we have to know what &lt;strong&gt;system call&lt;/strong&gt; is. System call means literally &lt;strong&gt;to call system to do something&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;We &lt;strong&gt;must be kernel mode&lt;/strong&gt; when we use system call. That means we can check how many times our program is changed to Kernel mode and User mode.&lt;/p&gt;
+&lt;h2 id=&#34;how-we-could-figure-it-out&#34;&gt;How we could figure it out?&lt;/h2&gt;
+&lt;p&gt;We can find the log by &lt;strong&gt;checking the OS log&lt;/strong&gt;, which is referred to as &lt;strong&gt;&amp;lsquo;sysstat&amp;rsquo;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;You can check the system stat how&lt;code&gt;sar&lt;/code&gt; command in Linux. &lt;code&gt;sar&lt;/code&gt; command show us the system stat like the photo below.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/SkUZGUvCn.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll explain some keys in the photo. The &lt;strong&gt;&amp;rsquo;%user&amp;rsquo; key&lt;/strong&gt; represents &lt;strong&gt;the percentage of CPU usage in User mode&lt;/strong&gt;, while &lt;strong&gt;the &amp;lsquo;%system&amp;rsquo; key&lt;/strong&gt; represents the percentage of CPU usage attributed to system calls which means the time &lt;strong&gt;in the kernel mode&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;time&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;func&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;time&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Sleep&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;500&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#a6e22e&#34;&gt;os&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Getppid&lt;/span&gt;() &lt;span style=&#34;color:#75715e&#34;&gt;// System call
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;	}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here&amp;rsquo;s the code in a nutshell: There are sleep function to pause execution and getppId function to get a parent process.&lt;/p&gt;
+&lt;p&gt;If &lt;code&gt;Getppid&lt;/code&gt; function is called, then our process will be changed to Kernel mode. In order to check this by log, we have to convert it to an executable file by &lt;code&gt;build&lt;/code&gt; command.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;go build main.go
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now, we can see the executable file in our dir. So, we are going to execute it by following this command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;taskset -c &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; ./main &amp;amp;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This command indicates that we want to execute the file using CPU-0. Then, we should &lt;strong&gt;verify&lt;/strong&gt; whether our program transitions from &lt;strong&gt;user mode to kernel mode&lt;/strong&gt; and back while the process is running.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sar -P &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This command indicates that we want to check the system log 10 times per second.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-shell!&#34; data-lang=&#34;shell!&#34;&gt;10:47:03 PM     CPU     %user     %nice   %system   %iowait    %steal     %idle
+10:47:04 PM       0      2.04      0.00      2.04      0.00      0.00     95.92
+10:47:05 PM       0      5.05      0.00      2.02      1.01      0.00     91.92
+10:47:06 PM       0      9.71      0.00      2.91      0.00      0.00     87.38
+10:47:07 PM       0      3.92      0.00      2.94      0.00      0.00     93.14
+10:47:08 PM       0      4.90      0.00      3.92      0.00      0.00     91.18
+10:47:09 PM       0      3.00      0.00      3.00      0.00      0.00     94.00
+10:47:10 PM       0      5.83      0.00      1.94      0.00      0.00     92.23
+10:47:11 PM       0      2.00      0.00      4.00      0.00      0.00     94.00
+10:47:12 PM       0      3.88      0.00      4.85      0.00      0.00     91.26
+10:47:13 PM       0      4.00      0.00      2.00      0.00      0.00     94.00
+Average:          0      4.46      0.00      2.97      0.10      0.00     92.48
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In this log, you can see the ratio of user mode to system mode. I&amp;rsquo;ll show you the meaning of result in the drawing.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hackmd.io/_uploads/Hya8KUvAh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Today, I&amp;rsquo;ve explained what &lt;strong&gt;kernel mode and user mode are&lt;/strong&gt;. I hope this information has been helpful to you. If you want to delve deeper into the topic of the kernel, I recommend reading an operating system book.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
       <title>Why Java Stream API use int type, not a byte type?</title>
       <link>https://tmdgusya.github.io/posts/java-byte/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
