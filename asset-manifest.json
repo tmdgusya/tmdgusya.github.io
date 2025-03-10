@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/static/js/main.fe657fae.js",
+    "static/media/king_pepe.webp": "/static/media/king_pepe.3865a9da341fa064def1.webp",
+    "static/media/zerom_pepe.webp": "/static/media/zerom_pepe.6494b4bb7166c529a3d1.webp",
+    "static/media/diamond-pepe.png": "/static/media/diamond-pepe.1e2994e57d14b8883009.png",
+    "static/media/clown-pepe.png": "/static/media/clown-pepe.e3b7104d64474dea3f86.png",
+    "static/media/thumbs-up-pepe.png": "/static/media/thumbs-up-pepe.2c700d0d9b70bd97d2cb.png",
+    "static/media/sweat-pepe.png": "/static/media/sweat-pepe.6d7fbd5b50221dc865b8.png",
+    "static/media/elon_pepe.png": "/static/media/elon_pepe.643c737703d77ac0f5fc.png",
+    "index.html": "/index.html",
+    "main.fe657fae.js.map": "/static/js/main.fe657fae.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fe657fae.js"
+  ]
+}
